@@ -11,6 +11,7 @@ interface AuthApi {
     @POST
     suspend fun login(
         @Field("email") email: String,
-        @Field("password") password: String
+        @Field("password") password: String,
+        @Field("returnSecureToken") returnToken: Boolean
     ) : LoginResponse
 }
