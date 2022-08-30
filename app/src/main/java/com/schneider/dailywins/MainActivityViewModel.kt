@@ -1,5 +1,7 @@
 package com.schneider.dailywins
 
-class MainActivityViewModel {
+import javax.inject.Inject
 
+class MainActivityViewModel @Inject constructor() {
+    // MainActivityViewModel(auth reposity also with dagger)
 }
