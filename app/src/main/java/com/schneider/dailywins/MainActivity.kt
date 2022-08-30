@@ -1,5 +1,6 @@
 package com.schneider.dailywins
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        finish()
+        startActivity(Intent(this, AuthActivity::class.java))
         // register observer to viewstate (logged in?) load fragment
         // logic itself in mainactivityviewmodel
 

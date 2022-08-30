@@ -30,17 +30,31 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
+    // nav
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.1"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.1"
+    // firebase
     implementation platform('com.google.firebase:firebase-bom:30.3.1')
-    // Declare the dependency for the Cloud Firestore library
+    // Declare the dep endency for the Cloud Firestore library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
-    implementation 'com.google.dagger:dagger:2.x'
-    kapt 'com.google.dagger:dagger-compiler:2.x'
-
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    //coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+    //dagger
+//    implementation 'com.google.dagger:dagger:2.x'
+//    kapt 'com.google.dagger:dagger-compiler:2.x'
+    // others
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.4.0'
