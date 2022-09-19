@@ -37,8 +37,7 @@ class MainActivity : DaggerAppCompatActivity() {
 
 
 // 1. create AuthActivityViewModel !
-// 2. add AuthActivity to dependency graph through contributes android injector
-// 3. Auth Activyt inherits from DaggerAppCompatActivity or DaggerFragment?
-// 4. provide Auth ActivityViewModel
+// 2. add AuthActivity to dependency graph through contributes android injector !
+// 3. Auth Activyt inherits from DaggerAppCompatActivity or DaggerFragment? !
+// 4. provide Auth ActivityViewModel !
 // 5. AuthActivity module
-// move method from auth activity to view model - atep 1.

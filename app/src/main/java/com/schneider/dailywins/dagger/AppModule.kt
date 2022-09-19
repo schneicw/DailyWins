@@ -10,7 +10,7 @@ abstract class AppModule {
     @ContributesAndroidInjector(
         modules = [
             MainActivityModule::class,
-            FragmentsModule::class
+            FragmentsModule::class,
         ]
     )
     abstract fun contributesMainActivity() : MainActivity
