@@ -1,5 +1,6 @@
 package com.schneider.dailywins.network
 
+import android.util.Log
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,16 +21,19 @@ class RemoteDataSource {
             .baseUrl(BASE_URL)
             .client(
                 OkHttpClient.Builder()
+                    .addNetworkInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
                     .addInterceptor { chain ->
-                        val url = chain
-                            .request()
-                            .url
-                            .newBuilder()
-//                            .addQueryParameter("key", "AIzaSyCouwwI5MjkqkFXTvNH2HPEPN-BRpChvcg")
-                            .build()
-                        chain.proceed(chain.request().newBuilder().url(url).build())
+//                        Log.d("RemoteDataSource", "buildApi() called with: chain = $chain")
+//                        val request = chain.request()
+//                        val orginalURL = request.url
+//                        val newBuilder = orginalURL.newBuilder().addQueryParameter("key", "AIzaSyCouwwI5MjkqkFXTvNH2HPEPN-BRpChvcg")
+//                        val url = newBuilder.build()
+//                        Log.d("RemoteDataSource","$url")
+//                        val requestBuilder = request.newBuilder().url(url)
+//                        chain.proceed(requestBuilder.build())
+                        Log.d("RemoteDataSource", "Hello World")
+                        chain.proceed(chain.request())
                     }
-                    .addNetworkInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                     .build()
             )
             .addConverterFactory(GsonConverterFactory.create())

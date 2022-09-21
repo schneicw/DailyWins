@@ -1,5 +1,6 @@
 package com.schneider.dailywins.repository
 
+import android.util.Log
 import com.schneider.dailywins.network.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -14,6 +15,7 @@ abstract class BaseRepository {
             try {
                 Resource.Success(apiCall.invoke())
             } catch (throwable: Throwable) {
+                Log.d("BaseRepository"," message : $throwable")
                 when(throwable){
                     is HttpException ->{
                         Resource.Failure(false, throwable.code(), throwable.response().errorBody())

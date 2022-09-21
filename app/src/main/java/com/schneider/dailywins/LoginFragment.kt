@@ -57,8 +57,8 @@ class LoginFragment : Fragment() {
         binding.buttonLogin.setOnClickListener {
             val email = binding.editTextTextEmailAddress.text.toString()
             val password = binding.editTextTextPassword2.text.toString()
-            easyLogin(email, password, view)
-//            viewModel.login(email, password)
+//            easyLogin(email, password, view)
+            viewModel.login(email, password)
         }
         return view
     }

@@ -11,6 +11,6 @@ class AuthRepository(
         email: String,
         password: String
     ) = safeApiCall {
-        api.login(email, password, true)
+        api.login( email, password)
     }
 }
