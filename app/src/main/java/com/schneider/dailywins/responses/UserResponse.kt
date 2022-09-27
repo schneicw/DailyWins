@@ -1,6 +1,6 @@
 package com.schneider.dailywins.responses
 
-data class User(
+data class UserResponse(
     val idToken: String,
     val email: String,
     val refreshToken: String,

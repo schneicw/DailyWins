@@ -6,7 +6,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RemoteDataSource {
+class RetrofitService {
 
     // "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCouwwI5MjkqkFXTvNH2HPEPN-BRpChvcg/"
     companion object {
@@ -21,18 +21,14 @@ class RemoteDataSource {
             .baseUrl(BASE_URL)
             .client(
                 OkHttpClient.Builder()
-                    .addNetworkInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
                     .addInterceptor { chain ->
-//                        Log.d("RemoteDataSource", "buildApi() called with: chain = $chain")
-//                        val request = chain.request()
-//                        val orginalURL = request.url
+                        val request = chain.request()
+                        val orginalURL = request.url
 //                        val newBuilder = orginalURL.newBuilder().addQueryParameter("key", "AIzaSyCouwwI5MjkqkFXTvNH2HPEPN-BRpChvcg")
 //                        val url = newBuilder.build()
-//                        Log.d("RemoteDataSource","$url")
-//                        val requestBuilder = request.newBuilder().url(url)
-//                        chain.proceed(requestBuilder.build())
-                        Log.d("RemoteDataSource", "Hello World")
-                        chain.proceed(chain.request())
+                        val temp = orginalURL.newBuilder().build()
+                        val requestBuilder = request.newBuilder().url(temp)
+                        chain.proceed(requestBuilder.build())
                     }
                     .build()
             )

@@ -12,11 +12,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.schneider.dailywins.databinding.FragmentLoginBinding
-import com.schneider.dailywins.network.RemoteDataSource
+import com.schneider.dailywins.network.RetrofitService
 import com.schneider.dailywins.network.Resource
 
 
-private val remoteDataSource = RemoteDataSource()
+private val retrofitService = RetrofitService()
 
 class LoginFragment : Fragment() {
 
@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
         val view = binding.root
 
 
-        viewModel.loginResponse.observe(viewLifecycleOwner) {
+        viewModel.loginResponse2.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Success -> {
                     Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_LONG).show()
@@ -58,7 +58,7 @@ class LoginFragment : Fragment() {
             val email = binding.editTextTextEmailAddress.text.toString()
             val password = binding.editTextTextPassword2.text.toString()
 //            easyLogin(email, password, view)
-            viewModel.login(email, password)
+            viewModel.login2(email, password)
         }
         return view
     }
