@@ -1,4 +1,4 @@
-package com.schneider.dailywins
+package com.schneider.dailywins.registration
 
 import android.opengl.Visibility
 import android.os.Bundle
@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.schneider.dailywins.R
 import com.schneider.dailywins.databinding.FragmentLoginBinding
 import com.schneider.dailywins.databinding.FragmentRegisterBinding
 
