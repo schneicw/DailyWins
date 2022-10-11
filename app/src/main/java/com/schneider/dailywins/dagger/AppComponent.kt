@@ -10,7 +10,8 @@ import dagger.android.AndroidInjector
     modules = [
         AndroidInjectionModule::class,
         AppModule::class,
-        LoginFragmentModule::class
+        LoginFragmentModule::class,
+        ActivityModule::class
     ]
 )
 interface AppComponent : AndroidInjector<DailyWinsApplication> {

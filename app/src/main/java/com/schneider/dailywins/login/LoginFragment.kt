@@ -14,12 +14,15 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.schneider.dailywins.R
+import com.schneider.dailywins.dagger.FragmentScope
 import com.schneider.dailywins.databinding.FragmentLoginBinding
 import com.schneider.dailywins.network.Resource
 import dagger.android.support.AndroidSupportInjection
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class LoginFragment : Fragment() {
+@FragmentScope
+class LoginFragment : DaggerFragment() {
 
     lateinit var binding: FragmentLoginBinding
 
@@ -27,20 +30,14 @@ class LoginFragment : Fragment() {
     lateinit var viewModel: LoginFragmentViewModel
 //      var viewModel: LoginFragmentViewModel = LoginFragmentViewModel()
 
-    @Inject
-    lateinit var auth: FirebaseAuth
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        AndroidSupportInjection.inject(this)
-    }
+//    @Inject
+//    lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-//        auth = Firebase.auth
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
 
@@ -56,7 +53,6 @@ class LoginFragment : Fragment() {
             authResult?.let {
                 Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_LONG).show()
                 Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment)
-                val user = auth.currentUser
             } ?: Toast.makeText(requireContext(), "Login Failed", Toast.LENGTH_SHORT).show()
         }
 
