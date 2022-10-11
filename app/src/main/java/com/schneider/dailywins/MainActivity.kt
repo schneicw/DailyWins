@@ -1,5 +1,6 @@
 package com.schneider.dailywins
 
+import android.content.Intent
 import android.os.Bundle
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
@@ -19,6 +20,8 @@ class MainActivity : DaggerAppCompatActivity() {
 
         // viewModel = MainActivityViewModel() - without dagger
 
+        finish()
+        startActivity(Intent(this, AuthActivity::class.java))
         // register observer to viewstate (logged in?) load fragment
         // logic itself in mainactivityviewmodel
 
@@ -31,3 +34,10 @@ class MainActivity : DaggerAppCompatActivity() {
     // private methods
 
 }
+
+
+// 1. create AuthActivityViewModel !
+// 2. add AuthActivity to dependency graph through contributes android injector !
+// 3. Auth Activyt inherits from DaggerAppCompatActivity or DaggerFragment? !
+// 4. provide Auth ActivityViewModel !
+// 5. AuthActivity module

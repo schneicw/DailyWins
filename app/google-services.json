@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "832136851539",
+    "project_id": "dailywins",
+    "storage_bucket": "dailywins.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832136851539:android:82972d800d8595b27816a6",
+        "android_client_info": {
+          "package_name": "com.schneider.dailywins"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832136851539-fbr3cq68mnikucq1ha28rrt0l2h89gce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbcfO2-eiFOggedJdKE90ezG2-6PNQLkc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832136851539-fbr3cq68mnikucq1ha28rrt0l2h89gce.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
