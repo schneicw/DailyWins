@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.schneider.dailywins.RegisterFragment"
+        android:name="com.schneider.dailywins.registration.RegisterFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_register" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.schneider.dailywins.HomeFragment"
+        android:name="com.schneider.dailywins.home.HomeFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_home" >
     </fragment>
