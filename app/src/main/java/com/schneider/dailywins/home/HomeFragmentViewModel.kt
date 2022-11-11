@@ -1,6 +1,8 @@
 package com.schneider.dailywins.home
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.schneider.dailywins.data.DailyWin
@@ -15,18 +17,23 @@ class HomeFragmentViewModel  @Inject constructor(
     private val applicationStore: ApplicationStore
     ) : ViewModel() {
 
-    private var winList = mutableListOf<DailyWin>()
+    private val _winList : MutableLiveData<MutableList<DailyWin>?> = MutableLiveData()
+    val winList: MutableLiveData<MutableList<DailyWin>?>
+        get() = _winList
 
     fun getAllUserWins() {
         val authState = applicationStore.applicationState.value as ApplicationState.AuthenticatedState
         db.collection("wins").document(authState.user?.uid ?:
             throw RuntimeException("Error Retrieving User Wins")
         ).collection("dailyWins").get().addOnSuccessListener { wins ->
+            var tempList = mutableListOf<DailyWin>()
             for (win in wins) {
                 val win = win.toObject(DailyWin::class.java)
-                winList.add(win)
-                println("USER VAL WINS: ${win.winList?.size}")
+                tempList.add(win)
+                println("WINLIST " )
+                println("USER VAL WINS: ${tempList[0].winList}")
             }
+            _winList.postValue(tempList)
         }
     }
 

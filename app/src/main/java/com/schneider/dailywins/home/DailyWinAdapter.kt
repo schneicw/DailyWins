@@ -1,5 +1,6 @@
 package com.schneider.dailywins.home
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,26 +10,32 @@ import androidx.recyclerview.widget.RecyclerView
 import com.schneider.dailywins.R
 import com.schneider.dailywins.data.DailyWin
 
-class DailyWinAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DailyWinAdapter() : RecyclerView.Adapter<DailyWinAdapter.DailyWinViewHolder>() {
 
-    class DailyWinViewHolder(view: View) :
-        RecyclerView.ViewHolder(view) {
-        private val winTextView: TextView = itemView.findViewById(R.id.win_text)
+    var wins = listOf<DailyWin>()
+
+    fun setData(wins: List<DailyWin>) {
+        Log.d("DailyWinAdapter", "setData() called with: wins = $wins")
+        this.wins = wins
+        notifyItemRangeInserted(0, wins.size)
+    }
+
+    class DailyWinViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val winTextView: TextView = itemView.findViewById(R.id.win_text)
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DailyWinViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.daily_win_item, parent, false)
         return DailyWinViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-//        val win = getItem(position)
-//        holder.bind(flower)
+    override fun onBindViewHolder(holder: DailyWinViewHolder, position: Int) {
+        holder.winTextView.text = wins[position].winList?.get(1) ?: "no win"
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return wins.size
     }
 }
