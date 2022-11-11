@@ -2,6 +2,11 @@ package com.schneider.dailywins
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.navigation.Navigation
+import com.schneider.dailywins.data.state.ApplicationState
+import com.schneider.dailywins.data.store.ApplicationStore
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -12,32 +17,30 @@ class MainActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var viewModel : MainActivityViewModel
 
-    // class ovverides
+    @Inject
+    lateinit var applicationStore: ApplicationStore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        // viewModel = MainActivityViewModel() - without dagger
-
-        finish()
-        startActivity(Intent(this, AuthActivity::class.java))
-        // register observer to viewstate (logged in?) load fragment
-        // logic itself in mainactivityviewmodel
-
-        // Fragment container view to load fragments
-        // otherwise with fragment manager
+        when (val appState = applicationStore.applicationState.value) {
+            is ApplicationState.UnauthenticatedState -> {
+                setContentView(R.layout.activity_main)
+            }
+            is ApplicationState.AuthenticatedState -> {
+                Log.d("Auth Activity"," message : ${appState.user}")
+                setContentView(R.layout.fragment_home)
+            }
+            else -> {}
+        }
     }
 
-    // public methods
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+    }
 
-    // private methods
-
+    companion object {
+        private const val TAG = "EmailPassword"
+    }
 }
-
-
-// 1. create AuthActivityViewModel !
-// 2. add AuthActivity to dependency graph through contributes android injector !
-// 3. Auth Activyt inherits from DaggerAppCompatActivity or DaggerFragment? !
-// 4. provide Auth ActivityViewModel !
-// 5. AuthActivity module

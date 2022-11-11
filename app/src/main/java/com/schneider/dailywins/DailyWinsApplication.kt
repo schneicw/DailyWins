@@ -3,6 +3,7 @@ package com.schneider.dailywins
 import android.app.Application
 import com.schneider.dailywins.dagger.AppModule
 import com.schneider.dailywins.dagger.ApplicationScope
+import com.schneider.dailywins.dagger.ContextModule
 import com.schneider.dailywins.dagger.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -17,7 +18,9 @@ class DailyWinsApplication : Application(), HasAndroidInjector {
 
     override fun onCreate() {
         super.onCreate()
-        DaggerAppComponent.builder().appModule(AppModule(this)).build().inject(this)
+        DaggerAppComponent.builder()
+            .contextModule(ContextModule(this))
+            .appModule(AppModule(this)).build().inject(this)
     }
 
     override fun androidInjector(): AndroidInjector<Any> {

@@ -1,23 +1,14 @@
 package com.schneider.dailywins.login
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.schneider.dailywins.R
 import com.schneider.dailywins.dagger.FragmentScope
 import com.schneider.dailywins.databinding.FragmentLoginBinding
-import com.schneider.dailywins.network.Resource
-import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -28,10 +19,6 @@ class LoginFragment : DaggerFragment() {
 
     @Inject
     lateinit var viewModel: LoginFragmentViewModel
-//      var viewModel: LoginFragmentViewModel = LoginFragmentViewModel()
-
-//    @Inject
-//    lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
