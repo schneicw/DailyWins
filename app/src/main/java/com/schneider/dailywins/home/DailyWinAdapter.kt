@@ -1,14 +1,22 @@
 package com.schneider.dailywins.home
 
+import android.content.Context
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.schneider.dailywins.R
 import com.schneider.dailywins.data.DailyWin
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import javax.inject.Inject
+
 
 class DailyWinAdapter() : RecyclerView.Adapter<DailyWinAdapter.DailyWinViewHolder>() {
 
@@ -21,7 +29,9 @@ class DailyWinAdapter() : RecyclerView.Adapter<DailyWinAdapter.DailyWinViewHolde
     }
 
     class DailyWinViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val date: TextView = itemView.findViewById(R.id.date)
         val winTextView: TextView = itemView.findViewById(R.id.win_text)
+        val constraint: ConstraintLayout = itemView.findViewById(R.id.constraint)
     }
 
 
@@ -32,10 +42,22 @@ class DailyWinAdapter() : RecyclerView.Adapter<DailyWinAdapter.DailyWinViewHolde
     }
 
     override fun onBindViewHolder(holder: DailyWinViewHolder, position: Int) {
-        holder.winTextView.text = wins[position].winList?.get(1) ?: "no win"
+        var bigString = "${wins[position].winList?.get(0)} \n \n${wins[position].winList?.get(1)} \n \n${wins[position].winList?.get(2)}"
+        holder.winTextView.text = bigString
+//        holder.constraint.setBackgroundColor(getRandomColor())
+
+        val outputFormatter: DateFormat = SimpleDateFormat("MM/dd/yyyy")
+        holder.date.text =  outputFormatter.format(wins[position].date);
     }
 
     override fun getItemCount(): Int {
         return wins.size
+    }
+
+    fun getRandomColor(){
+        val colorList = listOf("#8795E1","#E6ADA9","#AF99D8", "#F1C37F", "#A1E1DB", "#C887D3", "#F8EC7F", "#F3997D", "#97E39A")
+//        val unwrappedDrawable = AppCompatResources.getDrawable(context, R.drawable.background)
+//        val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable!!)
+//        DrawableCompat.setTint(wrappedDrawable, Color.parseColor(colorList.random()))
     }
 }

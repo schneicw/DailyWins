@@ -5,23 +5,29 @@
       <map>
         <entry key="../../../layout/custom_preview.xml" value="0.17086330935251798" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2495" />
+        <entry key="app/src/main/res/drawable/background.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/ic_add_entry.xml" value="0.2225" />
         <entry key="app/src/main/res/drawable/ic_baseline_calendar_view_day_24.xml" value="0.2495" />
         <entry key="app/src/main/res/drawable/ic_calendar_today.xml" value="0.2495" />
         <entry key="app/src/main/res/drawable/ic_highlight.xml" value="0.2495" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2495" />
         <entry key="app/src/main/res/drawable/ic_streak.xml" value="0.2225" />
+        <entry key="app/src/main/res/drawable/rounded_image.xml" value="0.178" />
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17278035481770837" />
         <entry key="app/src/main/res/layout/daily_win.xml" value="0.17074275362318841" />
-        <entry key="app/src/main/res/layout/daily_win_item.xml" value="0.1859375" />
-        <entry key="app/src/main/res/layout/fragment_add_log.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/daily_win_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_add_log.xml" value="0.3398193359375" />
+        <entry key="app/src/main/res/layout/fragment_add_win.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_bottom_nav.xml" value="0.24375" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22115173339843752" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.22754669189453128" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.14" />
         <entry key="app/src/main/res/layout/item_entry.xml" value="0.22135416666666666" />
+        <entry key="app/src/main/res/layout/layout_bg.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/layout/streak_view.xml" value="0.21458333333333332" />
+        <entry key="app/src/main/res/layout/win_background.xml" value="0.20244565217391305" />
+        <entry key="app/src/main/res/layout/win_item.xml" value="0.2645985401459854" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.24270833333333333" />
       </map>
     </option>

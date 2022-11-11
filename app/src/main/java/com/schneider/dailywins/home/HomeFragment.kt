@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import com.schneider.dailywins.R
 import com.schneider.dailywins.databinding.FragmentHomeBinding
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -29,6 +31,10 @@ class HomeFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.recyclerView.adapter = adapter
+
+        binding.addWins.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_addWinFragment)
+        }
 
         homeViewModel.winList.observe(viewLifecycleOwner) { wins ->
              wins?.let {
