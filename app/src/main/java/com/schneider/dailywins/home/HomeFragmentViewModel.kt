@@ -37,6 +37,22 @@ class HomeFragmentViewModel  @Inject constructor(
         }
     }
 
+    fun addWin() {
+//        val authState = applicationStore.applicationState.value as ApplicationState.AuthenticatedState
+//        db.collection("wins").document(authState.user?.uid ?:
+//        throw RuntimeException("Error Retrieving User Wins")
+//        ).collection("dailyWins").get().addOnSuccessListener { wins ->
+//            var tempList = mutableListOf<DailyWin>()
+//            for (win in wins) {
+//                val win = win.toObject(DailyWin::class.java)
+//                tempList.add(win)
+//                println("WINLIST " )
+//                println("USER VAL WINS: ${tempList[0].winList}")
+//            }
+//            _winList.postValue(tempList)
+//        }
+    }
+
     fun deleteUserWin() {
     }
 }

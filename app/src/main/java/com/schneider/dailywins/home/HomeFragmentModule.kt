@@ -10,4 +10,7 @@ abstract class HomeFragmentModule {
     @FragmentScope
     @ContributesAndroidInjector
     abstract fun contributesHomeFragment() : HomeFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributesAdapter() : DailyWinAdapter
 }

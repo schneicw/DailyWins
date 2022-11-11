@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="#B2DDCE"
-tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DEF4ED"
+    tools:context=".MainActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -32,26 +32,27 @@ tools:context=".MainActivity">
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
         android:background="#00FAF1F1"
+        android:fontFamily="sans-serif-black"
         android:text="@string/daily_wins"
         android:textSize="50sp"
-        android:layout_marginVertical="16dp"
+        app:layout_constraintBottom_toTopOf="@id/recycler_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/recycler_view"
         tools:textStyle="bold" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/imageView"
+        android:id="@+id/addWins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:clickable="true"
         android:contentDescription="add entry"
         android:focusable="true"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"
         app:srcCompat="@drawable/ic_add_entry"
         tools:ignore="SpeakableTextPresentCheck" />
 
