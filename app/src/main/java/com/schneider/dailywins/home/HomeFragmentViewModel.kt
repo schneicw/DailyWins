@@ -64,23 +64,6 @@ class HomeFragmentViewModel  @Inject constructor(
         ).collection("dailyWins").document(win.winId).update("highlighted", win.highlighted)
             .addOnSuccessListener { Log.d("AHH", "DocumentSnapshot successfully updated!") }
             .addOnFailureListener { e -> Log.w("AHH", "Error updating document", e) }
-//        val authState = applicationStore.applicationState.value as ApplicationState.AuthenticatedState
-//        db.collection("wins").document(authState.user?.uid ?:
-//        throw RuntimeException("Error Retrieving User Wins")
-//        ).collection("dailyWins").document(win)
-////        val authState = applicationStore.applicationState.value as ApplicationState.AuthenticatedState
-////        db.collection("wins").document(authState.user?.uid ?:
-////        throw RuntimeException("Error Retrieving User Wins")
-////        ).collection("dailyWins").get().addOnSuccessListener { wins ->
-////            var tempList = mutableListOf<DailyWin>()
-////            for (win in wins) {
-////                val win = win.toObject(DailyWin::class.java)
-////                tempList.add(win)
-////                println("WINLIST " )
-////                println("USER VAL WINS: ${tempList[0].winList}")
-////            }
-////            _winList.postValue(tempList)
-////        }
     }
 
     fun deleteUserWin() {
