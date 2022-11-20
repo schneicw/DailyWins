@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17278035481770837" />
         <entry key="app/src/main/res/layout/daily_win.xml" value="0.17074275362318841" />
         <entry key="app/src/main/res/layout/daily_win_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_add.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_add_log.xml" value="0.3398193359375" />
         <entry key="app/src/main/res/layout/fragment_add_win.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_bottom_nav.xml" value="0.24375" />

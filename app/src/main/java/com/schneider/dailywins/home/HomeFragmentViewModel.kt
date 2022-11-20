@@ -33,6 +33,7 @@ class HomeFragmentViewModel  @Inject constructor(
                 println("WINLIST " )
                 println("USER VAL WINS: ${tempList[0].winList}")
             }
+            tempList.sortByDescending { it.date }
             _winList.postValue(tempList)
         }
     }
