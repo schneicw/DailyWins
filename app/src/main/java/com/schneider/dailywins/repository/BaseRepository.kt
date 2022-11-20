@@ -18,7 +18,7 @@ abstract class BaseRepository {
                 Log.d("BaseRepository"," message : $throwable")
                 when(throwable){
                     is HttpException ->{
-                        Resource.Failure(false, throwable.code(), throwable.response().errorBody())
+                        Resource.Failure(false, throwable.code(), throwable.response()?.errorBody())
                     } else -> {
                         Resource.Failure(true, null, null)
                 }

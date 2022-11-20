@@ -1,24 +1,28 @@
 package com.schneider.dailywins.home
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.schneider.dailywins.R
 import com.schneider.dailywins.data.DailyWin
+import com.squareup.picasso.Picasso
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import javax.inject.Inject
 
 
-class DailyWinAdapter() : RecyclerView.Adapter<DailyWinAdapter.DailyWinViewHolder>() {
+class DailyWinAdapter(private val itemClickCallback: ((DailyWin) -> Unit)?) : RecyclerView.Adapter<DailyWinAdapter.DailyWinViewHolder>() {
 
     var wins = listOf<DailyWin>()
 
@@ -28,9 +32,16 @@ class DailyWinAdapter() : RecyclerView.Adapter<DailyWinAdapter.DailyWinViewHolde
         notifyItemRangeInserted(0, wins.size)
     }
 
+    fun refreshData() {
+        notifyDataSetChanged()
+    }
+
     class DailyWinViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val date: TextView = itemView.findViewById(R.id.date)
         val winTextView: TextView = itemView.findViewById(R.id.win_text)
+        val winPhoto: ImageView = itemView.findViewById(R.id.image)
+        val highlight: ImageView = itemView.findViewById(R.id.highlight)
+
         val constraint: ConstraintLayout = itemView.findViewById(R.id.constraint)
     }
 
@@ -44,10 +55,26 @@ class DailyWinAdapter() : RecyclerView.Adapter<DailyWinAdapter.DailyWinViewHolde
     override fun onBindViewHolder(holder: DailyWinViewHolder, position: Int) {
         var bigString = "${wins[position].winList?.get(0)} \n \n${wins[position].winList?.get(1)} \n \n${wins[position].winList?.get(2)}"
         holder.winTextView.text = bigString
-//        holder.constraint.setBackgroundColor(getRandomColor())
-
         val outputFormatter: DateFormat = SimpleDateFormat("MM/dd/yyyy")
         holder.date.text =  outputFormatter.format(wins[position].date);
+        if (wins[position].photoId == "null" || wins[position].photoId == null) {
+            holder.winPhoto.setImageResource(R.drawable.sunset)
+        } else {
+            Picasso.get().load(wins[position].photoId).fit().into(holder.winPhoto)
+        }
+
+        if (wins[position].highlighted) {
+            holder.highlight.setImageResource(R.drawable.ic_highlight)
+        } else {
+            holder.highlight.setImageResource(R.drawable.ic_not_highlight)
+        }
+
+        holder.highlight.setOnClickListener {
+            wins[position].highlighted = !wins[position].highlighted
+            itemClickCallback?.invoke(wins[position])
+            notifyItemChanged(position)
+        }
+
     }
 
     override fun getItemCount(): Int {

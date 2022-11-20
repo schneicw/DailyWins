@@ -27,7 +27,7 @@ class MainActivityViewModel @Inject constructor(
 
     init {
         runBlocking {
-            datastore.edit { it.clear() }
+//            datastore.edit { it.clear() }
             appState = getString("email")
         }
 

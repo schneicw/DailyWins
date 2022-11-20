@@ -8,28 +8,14 @@
     android:paddingHorizontal="80dp"
     android:paddingVertical="10dp">
 
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="100dp"
-        android:fontFamily="sans-serif-black"
-        android:hint="Date    +"
-        android:paddingBottom="8dp"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
         android:src="@drawable/resource_default"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="350dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -84,6 +70,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/win_text_3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/win_text_3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
