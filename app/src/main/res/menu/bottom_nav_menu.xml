@@ -3,7 +3,7 @@
     <item
         android:id="@+id/today_menu_item"
         android:icon="@drawable/ic_calendar_today"
-        android:title="Today" />
+        android:title="Wins" />
     <item
         android:id="@+id/highlights_menu_item"
         android:icon="@drawable/ic_highlight"

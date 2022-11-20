@@ -30,15 +30,16 @@ class AddWinFragmentViewModel @Inject constructor(
         get() = _randomPhoto
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun addWin(wins: List<String>, date: String = "null") {
+    fun addWin(wins: List<String>, photoId: String = "null") {
         println("AddWinFragment: addWinFunction")
         val dattime = LocalDate.now()
         val date = Date.from(dattime.atStartOfDay(ZoneId.systemDefault()).toInstant())
-        val win = DailyWin(winList = wins, date = date)
+        val newUUID = UUID.randomUUID().toString()
+        val win = DailyWin(winId = newUUID, winList = wins, date = date, photoId = photoId)
         val authState = applicationStore.applicationState.value as ApplicationState.AuthenticatedState
         db.collection("wins").document(authState.user?.uid ?:
         throw RuntimeException("Error Retrieving User Wins")
-        ).collection("dailyWins").add(win).addOnSuccessListener {
+        ).collection("dailyWins").document(win.winId).set(win).addOnSuccessListener {
             println("wins: $win")
         }
     }

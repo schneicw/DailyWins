@@ -20,6 +20,9 @@ class AddWinFragment : DaggerFragment() {
 
     private lateinit var binding: FragmentAddBinding
 
+    private var photoURL: String = ""
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,6 +36,7 @@ class AddWinFragment : DaggerFragment() {
 
         addWinViewModel.randomPhoto.observe(this.viewLifecycleOwner) {
             Picasso.get().load(it.urls.regular).fit().into(binding.image)
+            photoURL = it.urls.regular
         }
         addWinViewModel.getRandomPhoto()
 
@@ -43,7 +47,7 @@ class AddWinFragment : DaggerFragment() {
             val win2 = binding.winText2.text.toString()
             val win3 = binding.winText3.text.toString()
             val wins = listOf(win1, win2, win3)
-            addWinViewModel.addWin(wins)
+            addWinViewModel.addWin(wins, photoId = photoURL)
             Navigation.findNavController(view).navigate(R.id.action_addWinFragment_to_homeFragment)
         }
     }
