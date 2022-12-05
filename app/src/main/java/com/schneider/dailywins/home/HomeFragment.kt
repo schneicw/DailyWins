@@ -1,16 +1,16 @@
 package com.schneider.dailywins.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.navigation.Navigation
-import com.google.android.material.navigation.NavigationBarView
 import com.schneider.dailywins.R
 import com.schneider.dailywins.data.DailyWin
 import com.schneider.dailywins.databinding.FragmentHomeBinding
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
+
 
 class HomeFragment : DaggerFragment() {
 
@@ -40,6 +40,10 @@ class HomeFragment : DaggerFragment() {
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_addWinFragment)
         }
 
+        binding.settings.setOnClickListener {
+            showPopup(it)
+        }
+
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.highlights_menu_item -> {
@@ -48,9 +52,14 @@ class HomeFragment : DaggerFragment() {
                 R.id.today_menu_item -> {
                     homeViewModel.getAllUserWins()
                 }
+                R.id.calendar_menu_item -> {
+                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_calendarFragment)
+                }
             }
             true
         }
+
+        // onCreateOptionsMenu
 
         homeViewModel.winList.observe(viewLifecycleOwner) { wins ->
              wins?.let {
@@ -59,6 +68,22 @@ class HomeFragment : DaggerFragment() {
             }
         }
         homeViewModel.getAllUserWins()
+    }
+
+    private fun showPopup(v: View) {
+        val popup = PopupMenu(requireActivity(), v)
+        val inflater: MenuInflater = popup.menuInflater
+        inflater.inflate(R.menu.actions, popup.menu)
+        popup.show()
+
+        popup.setOnMenuItemClickListener {
+            if (it.itemId == R.id.logout) {
+                homeViewModel.logout()
+            }
+            Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_loginFragment)
+            true
+        }
+        // set on item click listener
     }
 }
 
