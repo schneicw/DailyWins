@@ -37,6 +37,12 @@
         <action
             android:id="@+id/action_homeFragment_to_addWinFragment"
             app:destination="@id/addWinFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
     <fragment
@@ -45,6 +51,15 @@
         android:label="AddWinFragment" >
         <action
             android:id="@+id/action_addWinFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.schneider.dailywins.calendar.CalendarFragment"
+        android:label="CalendarFragment" >
+        <action
+            android:id="@+id/action_calendarFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

@@ -2,6 +2,7 @@ package com.schneider.dailywins.dagger
 
 import com.schneider.dailywins.DailyWinsApplication
 import com.schneider.dailywins.addwins.AddWinModule
+import com.schneider.dailywins.calendar.CalendarFragmentModule
 import com.schneider.dailywins.home.HomeFragmentModule
 import com.schneider.dailywins.login.LoginFragmentModule
 import dagger.Component
@@ -18,7 +19,8 @@ import javax.inject.Singleton
         ActivityModule::class,
         HomeFragmentModule::class,
         ContextModule::class,
-        AddWinModule::class
+        AddWinModule::class,
+        CalendarFragmentModule::class
     ]
 )
 interface AppComponent : AndroidInjector<DailyWinsApplication> {

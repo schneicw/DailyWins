@@ -1,22 +1,28 @@
 package com.schneider.dailywins.home
 
 import android.util.Log
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.schneider.dailywins.data.DailyWin
 import com.schneider.dailywins.data.state.ApplicationState
 import com.schneider.dailywins.data.store.ApplicationStore
+import kotlinx.coroutines.launch
 import java.lang.RuntimeException
 import javax.inject.Inject
 
 class HomeFragmentViewModel  @Inject constructor(
     private val auth: FirebaseAuth,
     private val db: FirebaseFirestore,
-    private val applicationStore: ApplicationStore
-    ) : ViewModel() {
+    private val applicationStore: ApplicationStore,
+    private val dataStore: DataStore<Preferences>
+) : ViewModel() {
 
     private val _winList : MutableLiveData<MutableList<DailyWin>?> = MutableLiveData()
     val winList: MutableLiveData<MutableList<DailyWin>?>
@@ -66,6 +72,11 @@ class HomeFragmentViewModel  @Inject constructor(
             .addOnFailureListener { e -> Log.w("AHH", "Error updating document", e) }
     }
 
-    fun deleteUserWin() {
+    fun logout() {
+        viewModelScope.launch {
+            dataStore.edit {
+                it.clear()
+            }
+        }
     }
 }
